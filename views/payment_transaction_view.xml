@@ -1,0 +1,21 @@
+<openerp>
+    <data>
+        <record id="transaction_form_sagepay_inherited" model="ir.ui.view">
+            <field name="name">transaction.form.sagepay.inherited</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.transaction_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Sage Pay Info.">
+                        <group colspan="4" col="4">
+                            <field name="SecurityKey"/>
+                            <field name="TxAuthNo"/>
+                            <field name="VPSTxId"/>
+                            <field name="crypt"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,22 @@
+<openerp>
+    <data>
+        <!-- inherited invoice form -->
+        <record id="invoice_form_sagepay_inherited" model="ir.ui.view">
+            <field name="name">account.invoice.form.sagepay.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="number" position="after">
+                    <group colspan="4" col="4">
+                        <div class="oe_button_box" name="button_box">
+                            <button name="sagepay_refund" type="object" class="oe_inline oe_stat_button pull-right" icon="fa-credit-card" help="Click for pay now on sagepay" string="Sagepay Refund"/>
+                        </div>
+                    </group>
+                </field>
+                <field name="residual" position="after">
+                    <field name="refund_sagepay"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

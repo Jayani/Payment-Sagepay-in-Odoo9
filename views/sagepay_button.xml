@@ -1,0 +1,15 @@
+<openerp>
+    <data noupdate="0">
+        <template id="sagepay_button">
+            <form action="/page/payment_sagepay.sagepayacquirerbutton">
+               <button type="submit" class="btn btn-success">
+                   <img t-if="not submit_txt" src="/payment_sagepay/static/src/img/sagepay_icon.png"/>
+                   <span t-if="submit_txt">
+                       <t t-esc="submit_txt"/>
+                       <span class="fa fa-long-arrow-right"/>
+                   </span>
+               </button>
+            </form> 
+       </template>
+    </data>
+</openerp>

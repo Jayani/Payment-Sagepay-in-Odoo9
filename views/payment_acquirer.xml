@@ -1,0 +1,29 @@
+<openerp>
+    <data>
+        <record id="acquirer_form_sage_pay" model="ir.ui.view">
+            <field name="name">acquirer.form.sage_pay</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[@name="acquirer"]' position='after'>
+                    <group attrs="{'invisible': [('provider', '!=', 'sagepay')]}">
+                        <field name="sage_pay_vendor_account"/>
+                    </group>
+                </xpath>
+                <field name="fees_active" position="after">
+                    <field name="sequence"/>
+                </field>
+            </field>
+        </record>
+        <record id="acquirer_tree_sage_pay" model="ir.ui.view">
+            <field name="name">acquirer.tree.sage_pay</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_list"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="sequence"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

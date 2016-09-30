@@ -1,0 +1,73 @@
+<openerp>
+    <data>
+        <!-- Form view of sagepay wizard conf -->
+        <record id="view_wiz_payment_sagepay_form" model="ir.ui.view">
+            <field name="name">view.wiz.payment.sagepay.form</field>
+            <field name="model">wiz.payment.sagepay</field>
+            <field name="arch" type="xml">
+                <form string="Sagepay Payment">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="card_type" required="1" tabindex="1"/>
+                                <field name="cv_code" required="1" tabindex="3"/>
+                            </group>
+                            <group>
+                                <field name="card_number" required="1" tabindex="2"/>
+                                <field name="card_holder_name" required="1" tabindex="4"/>
+                            </group>
+                        </group>
+                        <group col="4" string="Expiry">
+                            <field name="card_expiry_month" required="1" tabindex="5"/>
+                            <field name="card_expiry_year" required="1" tabindex="6"/>
+                        </group>
+                        <footer>
+                            <button string="Pay Now" name="btn_sagepay_payment" type="object" class="btn-primary" help="Click for pay now on sagepay"/>
+                            or
+                            <button string="Cancel" class="btn-default" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action of sagepay wizard  -->
+        <record id="action_wiz_payment_sagepay_form" model="ir.actions.act_window">
+            <field name="name">Payment Sagepay</field>
+            <field name="res_model">wiz.payment.sagepay</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Form view of sagepay refund wizard conf -->
+        <record id="view_wiz_refund_sagepay_form" model="ir.ui.view">
+            <field name="name">view.wiz.refund.sagepay.form</field>
+            <field name="model">wiz.refund.sagepay</field>
+            <field name="arch" type="xml">
+                <form string="Sagepay Refund">
+                    <group>
+                        <field name="amount"/>
+                    </group>
+                    <separator string="Reason for Refund"/>
+                    <field name="description" required="1" placeholder="Write refund reason here..."/>
+                    <footer>
+                        <button string="Sagepay Refund" name="sagepay_refund" type="object" class="btn-primary"/>
+                        or
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action of sagepay refund wizard  -->
+        <record id="action_wiz_refund_sagepay_form" model="ir.actions.act_window">
+            <field name="name">Sagepay Refund</field>
+            <field name="res_model">wiz.refund.sagepay</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

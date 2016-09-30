@@ -1,0 +1,14 @@
+<openerp>
+    <data noupdate="1">
+        <record id="payment_acquirer_sage_pay" model="payment.acquirer">
+            <field name="name">PaymentSagePay</field>
+            <field name="provider">sagepay</field>
+            <field name="company_id" ref="base.main_company" />
+            <field name="view_template_id" ref="payment_sagepay.sagepayacquirerbutton" />
+            <!--<field name="environment">test</field>-->
+            <field name="pre_msg"><![CDATA[
+            <p>You will be redirected to the PaymentSagePay website after clicking on the payment button.</p>]]></field>
+            <!--<field name="sage_pay_merchant_account">dummy</field>-->
+        </record>
+    </data>
+</openerp>

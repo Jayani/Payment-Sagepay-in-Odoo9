@@ -1,0 +1,33 @@
+<openerp>
+    <data>
+        <template name="Thankyou" id="payment_sagepay.Thank_you">
+            <div class="container" id="id_section1">
+                <div id="wrap" t-attf-class="wrapper">
+                    <div class='row' aria-hidden="true">
+                        <div class='row'>
+                            <div align="center wait">
+                                <h3>Please wait</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                            <script type="text/javascript" src="/payment_sagepay/static/src/js/onload.js"></script>
+                            <form t-att-action="ACSURL" class="form-horizontal mt32" onsubmit="" method="post" >
+                                <div class='row'>
+                                    <div align="center"><h3>You will now redirect to bank's 3D secure page</h3></div>
+                                    <div align="center"><h2 style="color: red;">Please, Do not close the window</h2></div>
+                                    <input type='hidden' name='MD' t-att-value='MD'/>
+                                    <input type='hidden' name='PaReq' t-att-value='PaReq'/>
+                                    <input type='hidden' name='TermUrl' t-att-value='TermUrl'/>
+                                    <button type="submit" style="display: none;" width="100px" id='id_submit' t-att-class="submit_class"  name="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </data>
+</openerp>

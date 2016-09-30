@@ -1,0 +1,13 @@
+===================================================================
+Maintaining the changelog of the module for each commit.
+===================================================================
+
+1.2 : Kazim Mirza - Serpent Consulting Services Pvt. Ltd. 07-07-2015
+    * Added the 3D Secure in SagePay
+
+1.1 : Kazim Mirza - Serpent Consulting Services Pvt. Ltd. 02-07-2015
+    * Added the Sagepay
+
+1.0 : Parmar Pratik - Serpent Consulting Services Pvt. Ltd. 30-06-2015
+    * Added the module.
+

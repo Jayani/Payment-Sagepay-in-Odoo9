@@ -1,0 +1,132 @@
+<openerp>
+    <data noupdate="0">
+        <template id="sagepay_assets" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/payment_sagepay/static/src/js/payment_in.js"/>
+            </xpath>
+        </template>
+        <template id="sagepayacquirerbutton">
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="initial-scale=1"/>
+                <title>Sagepay Payment</title>
+                <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
+                <link rel="stylesheet" href="/web/static/lib/jquery.ui/css/smoothness/jquery-ui-1.9.1.custom.css"/>
+                <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
+            </head>
+            <div class="container">
+                <div class='row'>
+                    <div class='col-md-2 mt64'></div>
+                    <div class='col-md-8 mt64' style="border: 1px solid #777; border-radius: 15px; box-shadow: 0 3px 6px #777; margin-top: 5%;"> 
+                        <div class='row'>
+                            <div class='col-md-12' >
+                                <div style="font-style: italic; text-align: right; background: #F5F5F5; color: #8D8B8B; margin-top: 2%;">
+                                     Secured By 128bit SSL Cert
+                                     <i style="background-position: -287px -24px; background-image: url(/payment_sagepay/static/src/img/glyphicons-halflings.png); width: 18px; height: 14px; margin-top: 1px; float: right; margin-left: 1%;">&amp;nbsp;</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <img class='img-responsive center-block' src='/payment_sagepay/static/src/img/sagepay_icon.png' style="margin-top:15px;"/>
+                            </div>
+                            <div class='col-md-6'>
+                                <img class='img-responsive center-block' src='/payment_sagepay/static/src/img/scs.png' style="height: 100px;margin-top: 4px;margin-right: 50px;"/>
+                            </div>
+                        </div>
+                        <!-- CREDIT CARD FORM STARTS HERE -->
+                        <div class="panel-default credit-card-box">
+                            <div class="panel-heading display-table">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="panel-title display-td pull-left">Payment Details</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img class="img-responsive pull-left" src="/payment_sagepay/static/src/img/cards.png" style="margin-top: 6px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form role="form" id="payment-form" action="/sagepay" method="POST">
+                                    <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cardHolder">CARD HOLDER FIRST NAME</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="cardholder" placeholder="Valid Card Holder Name" required="true" />
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cardHolder">CARD HOLDER LAST NAME</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="cardholdersurname" placeholder="Valid Card Holder Surname" required= "true"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cardNumber">CARD NUMBER</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control numberonly" name="cardNumber" placeholder="Valid Card Number" required= "true"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-credit-card"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="col-md-3" style="padding-right: 0px;padding-left: 0px;">
+                                            <div class="form-group">
+                                                <label for="cardname">Card Type</label>
+                                                <select class="form-control" name="card_name">
+                                                    <option value="VISA">Visa</option>
+                                                    <option value="MC">Mastercard</option>
+                                                    <option value="MAESTRO">Maestro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 text-center" style="padding-right: 0px;padding-left: 0px;">
+                                            <div class="form-group" style="margin-top: 25px;font-size: 25px;"></div>
+                                        </div>
+                                        <div class="col-md-3" style="padding-left:0px;padding-right: 0px;">
+                                            <div class="form-group">
+                                                <label for="expiry">Expiry Date</label>
+                                                <input type="text" class="form-control numberonly" name="cardExpiry" placeholder="MM/YY" required= "true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 text-center" style="padding-right: 0px;padding-left: 0px;">
+                                            <div class="form-group" style="margin-top: 25px;font-size: 25px;"></div>
+                                        </div>
+                                        <div class="col-md-3" style="padding-left:0px;padding-right: 0px;"> 
+                                            <div class="form-group">
+                                                <label for="cardCVC">CVC</label>
+                                                <input type="text" class="form-control numberonly" name="cardCVC" placeholder="CVC" required= "true"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row mt16" align="center">
+                                        <button type="submit" class="btn btn-success btn-lg btn-block">Pay</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CREDIT CARD FORM ENDS HERE -->
+                    <div class='col-md-2'></div>
+                </div>
+            </div>
+        </template>
+    </data>
+</openerp>
